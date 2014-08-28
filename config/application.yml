@@ -1,0 +1,11 @@
+defaults: &default_settings
+  blarg: true
+
+development:
+  <<: *default_settings
+
+test:
+  <<: *default_settings
+
+production:
+  <<: *default_settings

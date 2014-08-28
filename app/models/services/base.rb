@@ -1,0 +1,3 @@
+class Services::Base
+
+end

@@ -1,0 +1,10 @@
+---
+:concurrency: 5
+:pidfile: tmp/pids/sidekiq.pid
+:schedule:
+  run_job_class:
+    class: Workers::ClassName
+    cron: "*/1 * * * *"
+
+production:
+  :concurrency: 5

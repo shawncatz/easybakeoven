@@ -1,0 +1,82 @@
+window.app = angular.module('Easybakeoven', [
+  'ngResource',
+  'ngRoute',
+  'xeditable',
+  'ui.bootstrap',
+  'faye',
+  'toaster'
+])
+
+app.config ($httpProvider) ->
+  authToken = $("meta[name=\"csrf-token\"]").attr("content")
+  $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+
+app.config ['$locationProvider', ($locationProvider) ->
+  $locationProvider.html5Mode false
+]
+
+app.config ['$routeProvider', ($routeProvider) ->
+  $routeProvider
+  .when '/',
+      templateUrl: "/assets/index.html"
+]
+
+app.factory 'Tadb', ['$resource', ($resource) ->
+  $resource '/tadb/:id', {id: '@id'}, {
+    get: {method: 'GET', isArray: true},
+  }
+]
+
+app.factory 'Tmdb', ['$resource', ($resource) ->
+  $resource '/tmdb/:id', {id: '@id'}, {
+    get: {method: 'GET', isArray: true},
+  }
+]
+
+app.factory 'Tvdb', ['$resource', ($resource) ->
+  $resource '/tvdb/:id', {id: '@id'}, {
+    get: {method: 'GET', isArray: true},
+  }
+]
+
+app.factory 'Faye', ['$faye', ($faye) ->
+  $faye "<%= Settings.faye.url %>", (client) ->
+#    client.disable("websocket")
+]
+
+app.factory 'Session', ['$rootScope', '$location', ($rootScope, $location)->
+  _view = 'grid'
+  _filter = null
+  view: (view)->
+    if view
+      _view = view
+      $rootScope.$broadcast 'session:view', view
+    _view
+  filter: (filter)->
+    if filter
+      _filter = filter
+      $rootScope.$broadcast 'session:filter', filter
+    _filter
+  action: ()->
+    $location.path()
+  path: (path, exact=false)->
+#    console.log 'isactive: '+path+' '+exact
+    if exact
+      $location.path() == path
+    else
+      $location.path().indexOf(path) == 0
+]
+
+app.config ($httpProvider) ->
+  $httpProvider.defaults.transformRequest.push (data, headersGetter) ->
+    utf8_data = data
+    unless angular.isUndefined(data)
+      d = angular.fromJson(data)
+      d["_utf8"] = "☃"
+      utf8_data = angular.toJson(d)
+    utf8_data
+
+#app.run ['editableOptions', (editableOptions)->
+#  editableOptions.theme = 'bs2' # 'bs3','bs2','default'
+#]
+
