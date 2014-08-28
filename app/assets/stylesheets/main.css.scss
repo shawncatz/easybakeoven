@@ -1,0 +1,114 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//body {
+//  padding-top: 50px;
+//}
+
+#main {
+  clear: both;
+  overflow: auto;
+}
+.link {
+  cursor: pointer;
+}
+.header-hidden {
+  display: none;
+}
+
+a.disk {
+  overflow: auto;
+  width: 200px;
+  div.diskused {
+    width: 50px;
+    text-align: right;
+    float: right;
+  }
+  div.diskname {
+    width: 100px;
+    font-weight: bold;
+    float: left;
+  }
+}
+
+.table {
+  th.links, td.links {
+    width: 100px;
+    text-align: right;
+  }
+
+  tr.deleting {
+    border-left: 3px solid red;
+  }
+
+  tr {
+    border-left: 3px solid white;
+  }
+}
+
+//#subnav {
+  .subnav-right {
+    text-align: right;
+  }
+//}
+
+table.fields-horizontal {
+  th {
+    width: 20%;
+    min-width: 100px;
+  }
+}
+
+table.fields-vertical {
+  width: 300px;
+  float: left;
+  margin-right: 10px;
+}
+
+textarea.text {
+  height: 150px;
+}
+
+.controls > .checkbox {
+  float: left;
+  width: 125px;
+  padding-top: 5px;
+}
+
+div.description {
+  height: 32px;
+  overflow: hidden;
+}
+
+div.description:hover {
+  height: auto;
+}
+
+#search-results-container {
+  overflow: auto;
+  height: 300px;
+}
+
+table.search-results {
+  width: 100%;
+  tr {
+    cursor: pointer;
+
+  }
+  tr:hover {
+    background-color: #EEE;
+    border-radius: 10px;
+    border-color: #DDD;
+  }
+  tr.active {
+    background-color: #DEDEFF;
+  }
+  td.title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  td.date {
+    width: 75px;
+  }
+}

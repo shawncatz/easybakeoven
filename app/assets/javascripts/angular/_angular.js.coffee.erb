@@ -1,9 +1,8 @@
-window.app = angular.module('Easybakeoven', [
+window.app = angular.module('EasyBakeOven', [
   'ngResource',
   'ngRoute',
-  'xeditable',
+#  'xeditable',
   'ui.bootstrap',
-  'faye',
   'toaster'
 ])
 
@@ -37,11 +36,6 @@ app.factory 'Tvdb', ['$resource', ($resource) ->
   $resource '/tvdb/:id', {id: '@id'}, {
     get: {method: 'GET', isArray: true},
   }
-]
-
-app.factory 'Faye', ['$faye', ($faye) ->
-  $faye "<%= Settings.faye.url %>", (client) ->
-#    client.disable("websocket")
 ]
 
 app.factory 'Session', ['$rootScope', '$location', ($rootScope, $location)->

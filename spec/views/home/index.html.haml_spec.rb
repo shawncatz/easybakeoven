@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "homes/index", :type => :view do
   before(:each) do
-    assign(:homes, [
+    assign(:home, [
       Home.create!(),
       Home.create!()
     ])

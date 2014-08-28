@@ -1,10 +1,9 @@
-class HomesController < ApplicationController
+class HomeController < ApplicationController
   before_action :set_home, only: [:show, :edit, :update, :destroy]
 
   # GET /homes
   # GET /homes.json
   def index
-    @homes = Home.all
   end
 
   # GET /homes/1

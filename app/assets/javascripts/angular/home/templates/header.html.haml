@@ -1,0 +1,6 @@
+.container(ng-controller="HomeHeaderCtrl")
+  .subnav.subnav-fixed
+    %ul.nav.nav-pills
+      %li{"ng-class"=>"{active: isActive('/', true)}"}
+        %a(href="#/")
+          Index

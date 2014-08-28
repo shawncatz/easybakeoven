@@ -1,5 +1,7 @@
 defaults: &default_settings
   blarg: true
+  ui:
+    workers: []
 
 development:
   <<: *default_settings

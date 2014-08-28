@@ -1,0 +1,11 @@
+
+%div(ng-controller="HomeCtrl")
+  %div(ng-include="'/assets/angular/home/templates/header.html'")
+  -#%div(ng-controller="DownloadCtrl")
+  -#  %div(ng-include="'/assets/angular/downloads/common.html'")
+
+  .container
+    .row
+      .span12
+        %div(ng-repeat="d in downloads track by d.id" medium="d" ng-hide="medium.status == 'held'")
+        %div(ng-repeat="s in upcoming track by s.id" medium="s")
